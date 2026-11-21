@@ -53,55 +53,48 @@ The app loads the model with `@st.cache_resource`. The feature order is fixed as
 
 ## 3. Push to GitHub
 
-Create a new public repository on GitHub, for example `titanic-survival-streamlit`.
+The repository is configured for:
+`https://github.com/maheshchary1234/Titanic-Survival-Prediction-Using-Streamlit.git`
 
-In the project folder:
+To stage and push your commits:
 ```bash
-git init
-git add app.py train_model.py requirements.txt README.md .gitignore model.joblib
-git commit -m "Build Titanic survival prediction Streamlit app"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/titanic-survival-streamlit.git
-git push -u origin main
+git add .
+git commit -m "Build and optimize Titanic survival prediction Streamlit app"
+git push origin main
 ```
 
-Replace `YOUR-USERNAME` with your GitHub username. If Git says a remote named `origin` already exists, use:
-```bash
-git remote set-url origin https://github.com/YOUR-USERNAME/titanic-survival-streamlit.git
-```
-
-**Important:** Run `python train_model.py` before `git add` so `model.joblib` exists. Include `model.joblib` in the repository for this small educational project. Do not upload passwords, API keys or private data.
+**Important:** Both `model.joblib` and `requirements.txt` are included in the repository so Streamlit Community Cloud can load the model immediately upon deployment.
 
 ## 4. Deploy on Streamlit Community Cloud
 
-1. Sign in at https://share.streamlit.io/ using your GitHub account.
-2. Choose **Create app**.
-3. Select the repository, branch `main`, and main file path `app.py`.
-4. Deploy the app.
-5. Wait for installation and startup to finish.
-6. Open the public app URL and test a prediction.
-7. Test the URL on a phone or in a private/incognito browser window.
-
-If deployment reports a missing model, confirm `model.joblib` is committed to the repository in the same folder as `app.py`. If package installation fails, check that `requirements.txt` is in the repository root.
+1. Sign in at [share.streamlit.io](https://share.streamlit.io/) using your GitHub account (`maheshchary1234`).
+2. Click **Create app** (or **New app**).
+3. Select:
+   - **Repository**: `maheshchary1234/Titanic-Survival-Prediction-Using-Streamlit`
+   - **Branch**: `main`
+   - **Main file path**: `app.py`
+4. Click **Deploy**.
+5. Streamlit will install dependencies from `requirements.txt` and launch the application.
+6. Copy the public deployment URL (e.g., `https://titanic-survival-prediction-using-streamlit.streamlit.app/`).
+7. Test the link on your desktop and phone.
 
 ## 5. What to submit to InternCircle
 
 According to the Project 05 learner guide, submit:
-- Public deployed Streamlit app URL
-- GitHub repository URL
-- Screenshot of a successful prediction
+1. **Public deployed Streamlit app URL**: (e.g. `https://titanic-survival-prediction-using-streamlit.streamlit.app/`)
+2. **GitHub repository URL**: `https://github.com/maheshchary1234/Titanic-Survival-Prediction-Using-Streamlit`
+3. **Screenshot of a successful prediction**: Showing inputs and the estimated chance of survival.
 
-Make sure both links are accessible to anyone with the link. The screenshot should show the selected passenger inputs and the prediction result.
+## 6. Submission template
 
-## 6. Submission notes
-
-I developed an interactive Titanic Survival Prediction web application using Streamlit and my Project 04 Decision Tree classifier. The application loads a saved machine-learning model using joblib, accepts passenger class, sex, age and fare as inputs, and displays the predicted survival class and estimated probability. The model is cached for efficient loading, and the app includes a friendly message if the model file is missing. The project is version-controlled on GitHub and deployed using Streamlit Community Cloud.
-
-App URL: [PASTE DEPLOYED STREAMLIT URL]
-GitHub URL: [PASTE GITHUB REPOSITORY URL]
-Prediction screenshot: [ATTACH SCREENSHOT]
+> **Project 05 Submission: Streamlit Interactive ML Web App**
+>
+> I developed and deployed an interactive Titanic Survival Prediction web application using Streamlit and my Decision Tree classifier trained on the historical Titanic dataset. The application loads the serialized model using `joblib` with `@st.cache_resource` for fast performance, validates user inputs (Ticket Class, Sex, Age, and Fare), and displays real-time prediction metrics including estimated survival probability and class outcome. Friendly error handling is implemented if files are missing.
+>
+> - **Deployed App URL**: [PASTE YOUR STREAMLIT APP LINK HERE]
+> - **GitHub Repository**: https://github.com/maheshchary1234/Titanic-Survival-Prediction-Using-Streamlit
+> - **Screenshot**: [Attach screenshot of prediction]
 
 ## Educational-use note
 
 This is a learning demonstration based on historical Titanic passenger data. Predictions are not advice and should not be treated as reliable real-world risk estimates.
-"# Titanic-Survival-Prediction-Using-Streamlit" 

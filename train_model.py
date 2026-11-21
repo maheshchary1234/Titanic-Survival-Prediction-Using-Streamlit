@@ -12,13 +12,22 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 
 BASE_DIR = Path(__file__).resolve().parent
 MODEL_PATH = BASE_DIR / "model.joblib"
+LOCAL_CSV = BASE_DIR / "titanic.csv"
 DATA_URL = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/titanic.csv"
 FEATURES = ["pclass", "sex", "age", "fare"]
 TARGET = "survived"
 
 def main():
-    print("Downloading the Titanic dataset...")
-    data = pd.read_csv(DATA_URL)
+    if LOCAL_CSV.exists():
+        print(f"Loading dataset from local file: {LOCAL_CSV.name}")
+        data = pd.read_csv(LOCAL_CSV)
+    else:
+        print("Downloading the Titanic dataset...")
+        data = pd.read_csv(DATA_URL)
+        try:
+            data.to_csv(LOCAL_CSV, index=False)
+        except Exception:
+            pass
     data = data[["survived", *FEATURES]].dropna().copy()
     data["sex"] = (data["sex"] == "female").astype(int)
     data["survived"] = data["survived"].astype(int)
